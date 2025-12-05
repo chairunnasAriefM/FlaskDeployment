@@ -1,14 +1,20 @@
+# import library yang dibutuhkan
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
 app = Flask(__name__)
+
+# Load model
 model = pickle.load(open('iris_model.pkl', 'rb'))
+
+# route default
 @app.route('/', methods=['GET'])
 
 def index():
     # Tampilkan form saja
     return render_template('form.html')
 
+# route /predict yang digunakan untuk melakukan prediksi
 @app.route('/predict', methods=['POST'])
 def predict():
     # Ambil data dari form

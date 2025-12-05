@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Import style.css -->
     <link rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}" />
     <title>Iris Classification</title>
@@ -11,6 +12,7 @@
 
 <body>
     <div class="container">
+        <!-- Form inputan yang akan menngirimkan data ke "/predict" jika button submit ditekan -->
         <form action="/predict" method="POST">
             <input type="text" name="sepal_l" placeholder="Sepal Length" required />
             <input type="text" name="sepal_w" placeholder="Sepal Width" required />
@@ -19,9 +21,14 @@
             <br>
             <button type="submit">Submit</button>
         </form>
+        <!-- End Form -->
+
+        <!-- Menampilkan Hasil dari prediksi jika isinya tidak kosong -->
         {% if result is not none %}
         <p class="message">Spesis Iris yang diprediksi adalah: {{ result }}</p>
         {% endif %}
+        <!-- End hasil -->
+
     </div>
 </body>
 
